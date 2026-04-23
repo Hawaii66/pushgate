@@ -1,12 +1,15 @@
 {
-  "projectName": "frontend",
+  "projectName": "pushgate",
   "mode": "file-router",
   "typescript": true,
   "packageManager": "pnpm",
   "includeExamples": false,
   "tailwind": true,
   "addOnOptions": {},
-  "envVarValues": {},
+  "envVarValues": {
+    "CONVEX_DEPLOYMENT": "dev:terrific-firefly-664",
+    "VITE_CONVEX_URL": "https://terrific-firefly-664.eu-west-1.convex.cloud"
+  },
   "git": false,
   "install": true,
   "routerOnly": false,
@@ -15,6 +18,7 @@
   "chosenAddOns": [
     "biome",
     "cloudflare",
+    "convex",
     "compiler",
     "shadcn",
     "posthog",
