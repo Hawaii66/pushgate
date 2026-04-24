@@ -9,8 +9,11 @@
  */
 
 import type * as auth from "../auth.js";
+import type * as devices from "../devices.js";
 import type * as http from "../http.js";
-import type * as test from "../test.js";
+import type * as project from "../project.js";
+import type * as secret from "../secret.js";
+import type * as utils from "../utils.js";
 
 import type {
   ApiFromModules,
@@ -20,8 +23,11 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
+  devices: typeof devices;
   http: typeof http;
-  test: typeof test;
+  project: typeof project;
+  secret: typeof secret;
+  utils: typeof utils;
 }>;
 
 /**
