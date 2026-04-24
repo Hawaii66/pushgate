@@ -25,7 +25,9 @@ export default defineSchema({
   projectDevices: defineTable({
     projectId: v.id("projects"),
     deviceId: v.id("devices"),
-  }).index("by_project", ["projectId"]),
+  })
+    .index("by_project", ["projectId"])
+    .index("by_device", ["deviceId"]),
   notifications: defineTable({
     projectId: v.id("project"),
     title: v.string(),

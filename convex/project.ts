@@ -57,6 +57,28 @@ export const getMembers = query({
   },
 });
 
+export const listByDevice = query({
+  args: {
+    deviceId: v.id("devices"),
+  },
+  handler: async (ctx, args) => {
+    await GetUserId(ctx);
+
+    const projectsWithDevice = await ctx.db
+      .query("projectDevices")
+      .withIndex("by_device", (q) => q.eq("deviceId", args.deviceId))
+      .collect();
+    const projects = await Promise.all(
+      projectsWithDevice.map((i) => ctx.db.get(i.projectId)),
+    );
+
+    return projects.filter(FilterNull).map((i) => ({
+      _id: i._id,
+      name: i.name,
+    }));
+  },
+});
+
 export const list = query({
   args: {},
   handler: async (ctx) => {
