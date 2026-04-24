@@ -125,6 +125,10 @@ export const create = mutation({
       apiKeyHash: hashedKey,
       connectionSecret: connectionSecret,
     });
+    await ctx.db.insert("usersInProject", {
+      projectId: newProjectId,
+      userId,
+    });
 
     return {
       plainApiKey,
