@@ -4,7 +4,7 @@ export function GenerateProjectConnectionSecret() {
 
 export function GenerateProjectApiKey() {
   const key = crypto.randomUUID();
-  return `pg_1_${key}.replace(/-/g, "")}`;
+  return `pg_1_${key}`.replace(/-/g, "");
 }
 
 export async function HashProjectApiKey(plainKey: string) {

@@ -100,6 +100,25 @@ export const list = query({
   },
 });
 
+export const rotateApiKey = mutation({
+  args: {
+    projectId: v.id("projects"),
+  },
+  handler: async (ctx, args) => {
+    const userId = await GetUserId(ctx);
+    await VerifyUserInProject(userId, args.projectId, ctx);
+
+    const plainApiKey = GenerateProjectApiKey();
+    const hashedKey = await HashProjectApiKey(plainApiKey);
+
+    await ctx.db.patch(args.projectId, {
+      apiKeyHash: hashedKey,
+    });
+
+    return { plainApiKey };
+  },
+});
+
 export const create = mutation({
   args: {
     name: v.string(),
