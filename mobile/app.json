@@ -2,14 +2,24 @@
   "expo": {
     "name": "pushgate",
     "slug": "pushgate",
-    "version": "1.0.0",
+    "version": "0.0.1",
+    "runtimeVersion": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "pushgate",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "usesAppleSignIn": true,
+      "associatedDomains": [
+        "applinks:pushgate.dev",
+        "applinks:pushgate.dev"
+      ],
+      "bundleIdentifier": "com.hawaiidev.pushgate",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -38,7 +48,11 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "expo-apple-authentication",
+      "expo-font",
+      "expo-secure-store",
+      "expo-notifications"
     ],
     "experiments": {
       "typedRoutes": true,
